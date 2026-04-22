@@ -1,0 +1,162 @@
+---
+// BaseLayout.astro — Universal page shell
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  image = '/images/og-default.webp',
+} = Astro.props;
+
+const siteUrl = 'https://ptdinc.com';
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
+
+// JSON-LD: LocalBusiness schema
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": siteUrl,
+  "name": "PTD Inc.",
+  "alternateName": "PTD Tree Service",
+  "description": "Professional tree removal, pruning, and trimming services. Licensed and insured.",
+  "url": siteUrl,
+  "telephone": "+1-555-555-5555",
+  "email": "info@ptdinc.com",
+  "logo": `${siteUrl}/images/ptdinc-logo.webp`,
+  "image": `${siteUrl}${image}`,
+  "priceRange": "$$",
+  "currenciesAccepted": "USD",
+  "paymentAccepted": "Cash, Check, Credit Card",
+  "openingHours": "Mo-Sa 07:00-18:00",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Timber Lane",
+    "addressLocality": "Springfield",
+    "addressRegion": "NJ",
+    "postalCode": "07001",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "40.7128",
+    "longitude": "-74.0060"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Springfield" },
+    { "@type": "City", "name": "Westfield" },
+    { "@type": "City", "name": "Summit" },
+    { "@type": "City", "name": "Cranford" },
+    { "@type": "City", "name": "Clark" },
+    { "@type": "City", "name": "Scotch Plains" },
+    { "@type": "City", "name": "Fanwood" },
+    { "@type": "City", "name": "Mountainside" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Tree Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Tree Removal",
+          "description": "Full tree removal including stump grinding. Any size, any terrain."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Tree Trimming and Pruning",
+          "description": "Crown thinning, deadwood removal, structural pruning for health and clearance."
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.google.com/maps?cid=PLACEHOLDER",
+    "https://www.bbb.org/us/nj/springfield/profile/tree-service/ptd-inc-PLACEHOLDER"
+  ]
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Primary Meta -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#1A1F1B" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Non-blocking font load -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,400&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,400&display=swap" /></noscript>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- GA4 via Partytown (non-blocking) -->
+  {GA_ID && (
+    <>
+      <script type="text/partytown" async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <script type="text/partytown" set:html={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_ID}');
+      `} />
+    </>
+  )}
+</head>
+<body>
+  <Header />
+  <main id="main-content">
+    <slot />
+  </main>
+  <Footer />
+
+  <!-- Scroll-reveal observer -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

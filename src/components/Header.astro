@@ -1,0 +1,336 @@
+---
+// Header.astro
+---
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <!-- Logo -->
+    <a href="/" class="header-logo" aria-label="PTD Inc. — Home">
+      <span class="logo-icon" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stylized tree silhouette -->
+          <path d="M18 2 L28 16 H22 L30 28 H20 V34 H16 V28 H6 L14 16 H8 Z" fill="#A0622A"/>
+          <rect x="16" y="28" width="4" height="6" fill="#2E1F0F"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <span class="logo-name">PTD</span>
+        <span class="logo-tagline">Inc.</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="header-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="/" class="nav-link link-amber">Home</a></li>
+        <li class="nav-item--dropdown">
+          <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Services <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="/services/tree-removal" class="dropdown-link" role="menuitem">Tree Removal</a></li>
+            <li><a href="/services/tree-trimming" class="dropdown-link" role="menuitem">Tree Trimming</a></li>
+          </ul>
+        </li>
+        <li><a href="/about" class="nav-link link-amber">About</a></li>
+        <li><a href="/contact" class="nav-link link-amber">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- CTA + Hamburger -->
+    <div class="header-actions">
+      <a href="tel:+15555555555" class="btn btn--primary header-cta" id="header-cta-call">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (555) 555-5555
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-nav-list">
+        <li><a href="/" class="mobile-nav-link">Home</a></li>
+        <li><a href="/services/tree-removal" class="mobile-nav-link">Tree Removal</a></li>
+        <li><a href="/services/tree-trimming" class="mobile-nav-link">Tree Trimming</a></li>
+        <li><a href="/about" class="mobile-nav-link">About</a></li>
+        <li><a href="/contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <a href="tel:+15555555555" class="btn btn--primary mobile-cta" id="mobile-cta-call">
+        Call (555) 555-5555
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(26, 31, 27, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(160, 98, 42, 0.2);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .site-header.scrolled {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 72px;
+  }
+
+  /* Logo */
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-linen);
+    letter-spacing: 0.1em;
+  }
+
+  .logo-tagline {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-amber);
+  }
+
+  /* Desktop Nav */
+  .header-nav {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    .header-nav {
+      display: flex;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-linen);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-amber-lt);
+  }
+
+  /* Dropdown */
+  .nav-item--dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-charcoal-2);
+    border: 1px solid rgba(160, 98, 42, 0.3);
+    min-width: 200px;
+    list-style: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .nav-item--dropdown:hover .nav-dropdown,
+  .nav-item--dropdown:focus-within .nav-dropdown {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-linen-dim);
+    font-family: var(--font-display);
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .dropdown-link:hover {
+    background-color: rgba(160, 98, 42, 0.15);
+    color: var(--color-amber);
+  }
+
+  /* Header Actions */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .header-cta {
+    display: none;
+    font-size: 0.8rem;
+    padding: 0.6rem 1.25rem;
+    min-height: 44px;
+  }
+
+  @media (min-width: 700px) {
+    .header-cta {
+      display: inline-flex;
+    }
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  @media (min-width: 900px) {
+    .hamburger {
+      display: none;
+    }
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-linen);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-bark);
+    border-top: 1px solid rgba(160, 98, 42, 0.2);
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .mobile-menu.open {
+    display: block;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-linen);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(244, 239, 230, 0.08);
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--color-amber);
+  }
+
+  .mobile-cta {
+    width: 100%;
+    justify-content: center;
+  }
+</style>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('open');
+    hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    mobileMenu?.classList.toggle('open');
+    mobileMenu?.setAttribute('aria-hidden', String(isOpen));
+  });
+</script>

@@ -1,0 +1,139 @@
+---
+// Testimonials.astro
+const testimonials = [
+  {
+    quote: "PTD took down a 60-foot oak that was leaning over my garage after the storm. They were here in two days and had it gone in four hours. Clean job, fair price.",
+    author: "Frank D.",
+    location: "Springfield, NJ",
+    service: "Emergency Tree Removal"
+  },
+  {
+    quote: "They trimmed five mature maples on my property. No damage to my lawn, no mess left behind. This is the third time I've used them and I wouldn't call anyone else.",
+    author: "Maria L.",
+    location: "Westfield, NJ",
+    service: "Tree Trimming"
+  },
+  {
+    quote: "Got four quotes. PTD was the only one that actually walked the yard before quoting. Straightforward, licensed, no nonsense. Would recommend without hesitation.",
+    author: "Kevin P.",
+    location: "Summit, NJ",
+    service: "Tree Removal + Stump"
+  }
+];
+---
+<section class="section testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <p class="label">What Clients Say</p>
+      <h2 class="display-section" id="testimonials-heading">
+        Real Work.<br />
+        Real Results.
+      </h2>
+    </div>
+
+    <div class="testimonials-grid">
+      {testimonials.map((t, i) => (
+        <blockquote class={`testimonial-card reveal reveal-delay-${i + 1}`}>
+          <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+          <p class="testimonial-text body-lg">{t.quote}</p>
+          <footer class="testimonial-footer">
+            <div class="testimonial-meta">
+              <span class="testimonial-author">{t.author}</span>
+              <span class="testimonial-location text-linen-dim body-sm">{t.location}</span>
+            </div>
+            <span class="badge">{t.service}</span>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    background-color: var(--color-charcoal);
+  }
+
+  .testimonials-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .testimonials-header .label {
+    margin-bottom: var(--space-3);
+    display: block;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 640px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .testimonial-card {
+    background-color: var(--color-charcoal-2);
+    border-left: 3px solid var(--color-amber);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    position: relative;
+  }
+
+  .testimonial-quote-mark {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    line-height: 0.8;
+    color: var(--color-amber);
+    opacity: 0.3;
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-6);
+    pointer-events: none;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-linen);
+    flex: 1;
+    line-height: 1.75;
+  }
+
+  .testimonial-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .testimonial-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .testimonial-author {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-linen);
+  }
+
+  .testimonial-location {
+    font-size: 0.8rem;
+  }
+</style>

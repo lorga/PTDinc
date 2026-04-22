@@ -1,0 +1,20 @@
+---
+// src/pages/index.astro — Homepage
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import AreasServed from '../components/AreasServed.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTABanner from '../components/CTABanner.astro';
+---
+<BaseLayout
+  title="PTD Inc. | Tree Removal & Trimming — Springfield, NJ"
+  description="PTD Inc. provides licensed tree removal, trimming, and pruning across Union, Essex, and Morris Counties in New Jersey. 20+ years of service. Call for a free quote."
+  canonicalPath="/"
+>
+  <Hero />
+  <ServicesGrid />
+  <AreasServed />
+  <Testimonials />
+  <CTABanner />
+</BaseLayout>

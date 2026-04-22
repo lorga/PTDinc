@@ -1,0 +1,320 @@
+---
+// src/pages/services/tree-removal.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+---
+<BaseLayout
+  title="Tree Removal Services | PTD Inc. — Union County, NJ"
+  description="PTD Inc. removes trees of any size across Springfield, Westfield, Summit, and surrounding NJ communities. Licensed, insured, and fully equipped for emergency jobs."
+  canonicalPath="/services/tree-removal"
+  image="/images/tree-removal.webp"
+>
+  <!-- Page Hero -->
+  <section class="service-hero grain-overlay" aria-label="Tree removal service hero">
+    <div class="service-hero-bg">
+      <img
+        src="/images/tree-removal.webp"
+        alt="PTD Inc. crew removing a dead pine tree from a property in Springfield, NJ"
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchpriority="high"
+        class="service-hero-img"
+      />
+      <div class="service-hero-overlay"></div>
+    </div>
+    <div class="container service-hero-content">
+      <p class="label">Tree Removal — Union County, NJ</p>
+      <h1 class="display-hero service-hero-heading">Tree<br /><span class="text-amber">Removal</span></h1>
+      <p class="body-lg text-linen-dim service-hero-body">Any size. Any location. Done safely and cleaned up completely.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <article class="section service-content">
+    <div class="container service-content-grid">
+      <div class="service-main reveal">
+        <h2 class="display-section service-section-title">What We Remove</h2>
+        <p class="body-lg text-linen-dim">
+          PTD Inc. handles tree removal for residential homeowners, commercial properties, municipalities, and HOAs throughout New Jersey. Dead trees, storm-damaged trees, trees too close to structures or power lines — we handle it all without subcontracting the work.
+        </p>
+
+        <div class="service-list-block reveal reveal-delay-1">
+          <h3 class="service-list-heading label">Common Removal Jobs</h3>
+          <ul class="service-list">
+            <li>Dead and diseased tree removal</li>
+            <li>Storm-damaged limb and full-tree removal</li>
+            <li>Tree removal near power lines (coordination with utility company)</li>
+            <li>Stump grinding and complete stump removal</li>
+            <li>Emergency tree removal — 24-hour response</li>
+            <li>Land clearing for construction or development</li>
+            <li>Tree removal in tight access zones using rigging and cranes</li>
+          </ul>
+        </div>
+
+        <div class="service-list-block reveal reveal-delay-2">
+          <h3 class="service-list-heading label">Our Process</h3>
+          <ol class="service-process">
+            <li>
+              <span class="process-num">01</span>
+              <div>
+                <strong>On-site assessment</strong>
+                <p class="body-sm text-linen-dim">We walk the property, evaluate the tree and surroundings, and provide a written quote on the spot.</p>
+              </div>
+            </li>
+            <li>
+              <span class="process-num">02</span>
+              <div>
+                <strong>Scheduling</strong>
+                <p class="body-sm text-linen-dim">Most jobs are scheduled within 5 business days. Emergency calls get same-day or next-day service.</p>
+              </div>
+            </li>
+            <li>
+              <span class="process-num">03</span>
+              <div>
+                <strong>Safe removal</strong>
+                <p class="body-sm text-linen-dim">Our crew uses proper rigging, ropes, and equipment to control the fall and prevent property damage.</p>
+              </div>
+            </li>
+            <li>
+              <span class="process-num">04</span>
+              <div>
+                <strong>Complete cleanup</strong>
+                <p class="body-sm text-linen-dim">All debris is chipped and removed. Stump grinding is available as an add-on or included in full packages.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="service-sidebar reveal reveal-delay-3">
+        <div class="sidebar-card">
+          <h3 class="sidebar-card-title label">Get a Quote</h3>
+          <p class="body-sm text-linen-dim sidebar-body">Ready to schedule? Call us directly or request an estimate online.</p>
+          <a href="tel:+15555555555" class="btn btn--primary sidebar-btn" id="removal-sidebar-call">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (555) 555-5555
+          </a>
+          <a href="/contact" class="btn btn--outline sidebar-btn" id="removal-sidebar-form">Request Online</a>
+        </div>
+
+        <div class="sidebar-card sidebar-trust">
+          <h3 class="sidebar-card-title label">Why PTD</h3>
+          <ul class="sidebar-trust-list">
+            <li>NJ License # TRC-00549821</li>
+            <li>Fully insured — $2M liability</li>
+            <li>20+ years in Union County</li>
+            <li>No subcontractors, ever</li>
+            <li>Free on-site estimates</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <CTABanner />
+</BaseLayout>
+
+<style>
+  /* Service Hero */
+  .service-hero {
+    position: relative;
+    height: 55vh;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .service-hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .service-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .service-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,31,27,0.95) 0%, rgba(26,31,27,0.4) 100%);
+  }
+
+  .service-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: var(--space-12);
+    padding-top: 90px;
+  }
+
+  .service-hero-content .label {
+    margin-bottom: var(--space-3);
+    display: block;
+  }
+
+  .service-hero-heading {
+    margin-bottom: var(--space-4);
+  }
+
+  .service-hero-body {
+    max-width: 500px;
+  }
+
+  /* Content Grid */
+  .service-content {
+    background-color: var(--color-charcoal);
+  }
+
+  .service-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 900px) {
+    .service-content-grid {
+      grid-template-columns: 1fr 320px;
+      align-items: start;
+    }
+  }
+
+  .service-section-title {
+    margin-bottom: var(--space-6);
+  }
+
+  .service-main > .body-lg {
+    margin-bottom: var(--space-10);
+    max-width: 640px;
+  }
+
+  /* List block */
+  .service-list-block {
+    margin-bottom: var(--space-10);
+  }
+
+  .service-list-heading {
+    margin-bottom: var(--space-4);
+    display: block;
+  }
+
+  .service-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .service-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--color-linen-dim);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .service-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    background-color: var(--color-amber);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+  /* Process */
+  .service-process {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    counter-reset: process;
+  }
+
+  .service-process li {
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+  }
+
+  .process-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-amber);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2.5rem;
+  }
+
+  .service-process strong {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-linen);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Sidebar */
+  .service-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    position: sticky;
+    top: 90px;
+  }
+
+  .sidebar-card {
+    background-color: var(--color-charcoal-2);
+    border: 1px solid rgba(160, 98, 42, 0.2);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .sidebar-card-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+  }
+
+  .sidebar-body {
+    color: var(--color-linen-dim);
+  }
+
+  .sidebar-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sidebar-trust-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .sidebar-trust-list li {
+    font-size: 0.875rem;
+    color: var(--color-linen-dim);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .sidebar-trust-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-moss-lt);
+  }
+</style>

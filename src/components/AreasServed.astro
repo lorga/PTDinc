@@ -1,0 +1,114 @@
+---
+// AreasServed.astro
+---
+<section class="section areas-section" id="areas-served" aria-labelledby="areas-heading">
+  <div class="container">
+    <div class="areas-inner">
+      <div class="areas-text reveal">
+        <p class="label">Where We Work</p>
+        <h2 class="display-section" id="areas-heading">
+          Serving<br />
+          <span class="text-amber">Union County</span><br />
+          & Beyond.
+        </h2>
+        <p class="body-lg text-linen-dim areas-desc">
+          PTD Inc. operates throughout Union, Essex, and Morris Counties. We handle residential and commercial properties — from single-family homes to large estates, HOAs, and municipalities.
+        </p>
+        <a href="/contact" class="btn btn--primary areas-cta" id="areas-cta">
+          Check Your Area
+        </a>
+      </div>
+
+      <div class="areas-grid reveal reveal-delay-2">
+        {[
+          { city: 'Springfield', county: 'Union' },
+          { city: 'Westfield', county: 'Union' },
+          { city: 'Summit', county: 'Union' },
+          { city: 'Cranford', county: 'Union' },
+          { city: 'Clark', county: 'Union' },
+          { city: 'Scotch Plains', county: 'Union' },
+          { city: 'Fanwood', county: 'Union' },
+          { city: 'Mountainside', county: 'Union' },
+          { city: 'Millburn', county: 'Essex' },
+          { city: 'Short Hills', county: 'Essex' },
+          { city: 'Livingston', county: 'Essex' },
+          { city: 'Chatham', county: 'Morris' },
+        ].map((area) => (
+          <div class="area-chip">
+            <span class="area-city">{area.city}</span>
+            <span class="area-county label">{area.county} Co.</span>
+          </div>
+        ))}
+        <div class="area-chip area-chip--more">
+          <span class="area-city">+ More</span>
+          <span class="area-county label">Call to confirm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .areas-section {
+    background-color: var(--color-charcoal-2);
+    border-top: 1px solid rgba(160, 98, 42, 0.12);
+  }
+
+  .areas-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 900px) {
+    .areas-inner {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: var(--space-20);
+    }
+  }
+
+  .areas-desc {
+    margin-block: var(--space-6);
+    max-width: 440px;
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .area-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: var(--space-4);
+    border: 1px solid rgba(160, 98, 42, 0.2);
+    background-color: rgba(26, 31, 27, 0.4);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .area-chip:hover {
+    border-color: var(--color-amber);
+    background-color: rgba(160, 98, 42, 0.08);
+  }
+
+  .area-chip--more {
+    border-style: dashed;
+    opacity: 0.6;
+  }
+
+  .area-city {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--color-linen);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .area-county {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+  }
+</style>

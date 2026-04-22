@@ -1,0 +1,276 @@
+---
+// src/pages/about.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+---
+<BaseLayout
+  title="About PTD Inc. | Licensed Tree Service — Springfield, NJ"
+  description="PTD Inc. has served Union County and surrounding NJ communities since 2005. Family-owned, fully licensed, and insured. Learn about our crew and our commitment to the work."
+  canonicalPath="/about"
+>
+  <!-- About Hero -->
+  <section class="about-hero grain-overlay" aria-label="About PTD Inc.">
+    <div class="about-hero-bg">
+      <img
+        src="/images/hero-bg.webp"
+        alt="PTD Inc. crew on a job site in Springfield, NJ"
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchpriority="high"
+        class="about-hero-img"
+      />
+      <div class="about-hero-overlay"></div>
+    </div>
+    <div class="container about-hero-content">
+      <p class="label">Family-Owned. Licensed. Insured.</p>
+      <h1 class="display-hero">About<br /><span class="text-amber">PTD Inc.</span></h1>
+    </div>
+  </section>
+
+  <!-- About Body -->
+  <section class="section about-body">
+    <div class="container about-grid">
+      <!-- Main story -->
+      <div class="about-main reveal">
+        <h2 class="display-section about-section-title">20 Years<br />in the Field.</h2>
+        <p class="body-lg text-linen-dim">
+          PTD Inc. started in 2005 with one truck, two chainsaws, and a reputation for showing up when other companies wouldn't. We're still doing exactly that — except now we have the equipment and crew to handle the largest jobs in the region.
+        </p>
+        <p class="body-lg text-linen-dim">
+          Every job is performed by our own crew. We don't subcontract. The people who show up to your property are PTD employees who know the work and stand behind it.
+        </p>
+        <p class="body-lg text-linen-dim">
+          We operate throughout Union, Essex, and Morris Counties. Our clients are homeowners, property managers, HOAs, municipalities, and general contractors — anyone who needs trees dealt with correctly the first time.
+        </p>
+
+        <hr class="hr-amber" />
+
+        <div class="license-block reveal reveal-delay-1">
+          <p class="label">License &amp; Insurance</p>
+          <p class="body-sm text-linen-dim">
+            PTD Inc. holds New Jersey Tree Expert License <strong class="text-amber">TRC-00549821</strong>, issued by the New Jersey Department of Environmental Protection, Division of Plant Industry. We carry $2,000,000 general liability coverage and full workers' compensation for all crew members.
+          </p>
+          <p class="body-sm text-linen-dim">
+            Ask for a certificate of insurance before any job. We provide it without delay.
+          </p>
+        </div>
+
+        <hr class="hr-amber" />
+
+        <div class="values-block reveal reveal-delay-2">
+          <p class="label">How We Work</p>
+          <div class="values-grid">
+            {[
+              { title: 'No Subcontractors', desc: 'Our crew does the job. The same people who gave you the quote show up for the work.' },
+              { title: 'Straight Quotes', desc: 'We look at the job in person. No surprise charges when we get there.' },
+              { title: 'Clean Sites', desc: 'Every job site looks better when we leave than when we arrived. That includes the stump.' },
+              { title: 'On Time', desc: 'We schedule a window and we show up in it. If something changes, we call you first.' },
+            ].map((v) => (
+              <div class="value-card">
+                <h3 class="value-title display-card">{v.title}</h3>
+                <p class="body-sm text-linen-dim">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar stats -->
+      <aside class="about-sidebar reveal reveal-delay-3">
+        <div class="about-stat-stack">
+          <div class="about-stat">
+            <span class="stat-num">2005</span>
+            <span class="stat-label label">Founded</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">2,400+</span>
+            <span class="stat-label label">Trees Removed</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">8</span>
+            <span class="stat-label label">Counties Served</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">$2M</span>
+            <span class="stat-label label">Liability Coverage</span>
+          </div>
+        </div>
+
+        <div class="sidebar-cred-card">
+          <p class="label">Credentials</p>
+          <ul class="cred-list">
+            <li>NJ Tree Expert License TRC-00549821</li>
+            <li>BBB Accredited Business</li>
+            <li>TCIA Member</li>
+            <li>$2M General Liability Insurance</li>
+            <li>Full Workers' Compensation</li>
+          </ul>
+          <a href="/contact" class="btn btn--primary cred-cta" id="about-cred-cta">
+            Request a Certificate of Insurance
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <CTABanner />
+</BaseLayout>
+
+<style>
+  /* About Hero */
+  .about-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 380px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .about-hero-bg { position: absolute; inset: 0; }
+  .about-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+  .about-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,31,27,0.97) 0%, rgba(26,31,27,0.45) 100%);
+  }
+
+  .about-hero-content {
+    position: relative; z-index: 2;
+    padding-bottom: var(--space-12);
+    padding-top: 90px;
+  }
+
+  .about-hero-content .label { margin-bottom: var(--space-3); display: block; }
+
+  /* Body */
+  .about-body { background-color: var(--color-charcoal); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr 300px;
+      align-items: start;
+    }
+  }
+
+  .about-section-title { margin-bottom: var(--space-8); }
+
+  .about-main .body-lg {
+    margin-bottom: var(--space-6);
+    max-width: 640px;
+  }
+
+  .license-block, .values-block {
+    margin-top: var(--space-8);
+  }
+
+  .license-block .label, .values-block .label {
+    display: block;
+    margin-bottom: var(--space-4);
+  }
+
+  .license-block .body-sm {
+    margin-bottom: var(--space-3);
+    line-height: 1.75;
+    max-width: 600px;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  @media (min-width: 600px) {
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .value-card {
+    background-color: var(--color-charcoal-2);
+    border-top: 2px solid var(--color-amber);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .value-title { font-size: 1.3rem; color: var(--color-linen); }
+
+  /* Sidebar */
+  .about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    position: sticky;
+    top: 90px;
+  }
+
+  .about-stat-stack {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(160, 98, 42, 0.2);
+    overflow: hidden;
+  }
+
+  .about-stat {
+    padding: var(--space-6) var(--space-8);
+    border-bottom: 1px solid rgba(160, 98, 42, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .about-stat:last-child { border-bottom: none; }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--color-amber);
+    line-height: 1;
+  }
+
+  .stat-label { font-size: 0.65rem; letter-spacing: 0.2em; }
+
+  .sidebar-cred-card {
+    background-color: var(--color-charcoal-2);
+    border: 1px solid rgba(160, 98, 42, 0.2);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .cred-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .cred-list li {
+    font-size: 0.875rem;
+    color: var(--color-linen-dim);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .cred-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-moss-lt);
+  }
+
+  .cred-cta { width: 100%; justify-content: center; font-size: 0.75rem; }
+</style>

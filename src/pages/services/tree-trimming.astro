@@ -1,0 +1,234 @@
+---
+// src/pages/services/tree-trimming.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+---
+<BaseLayout
+  title="Tree Trimming & Pruning | PTD Inc. — Union County, NJ"
+  description="Crown thinning, deadwood removal, structural pruning, and utility clearance across Springfield, Westfield, Summit, and surrounding NJ towns. PTD Inc. — licensed and insured."
+  canonicalPath="/services/tree-trimming"
+  image="/images/tree-trimming.webp"
+>
+  <!-- Page Hero -->
+  <section class="service-hero grain-overlay" aria-label="Tree trimming service hero">
+    <div class="service-hero-bg">
+      <img
+        src="/images/tree-trimming.webp"
+        alt="PTD Inc. arborist pruning oak branches in Westfield, NJ"
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchpriority="high"
+        class="service-hero-img"
+      />
+      <div class="service-hero-overlay"></div>
+    </div>
+    <div class="container service-hero-content">
+      <p class="label">Tree Trimming — Union County, NJ</p>
+      <h1 class="display-hero service-hero-heading">Tree Trimming<br /><span class="text-amber">&amp; Pruning</span></h1>
+      <p class="body-lg text-linen-dim">Healthier trees, safer properties, better-looking yards.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <article class="section service-content">
+    <div class="container service-content-grid">
+      <div class="service-main reveal">
+        <h2 class="display-section service-section-title">What We Trim</h2>
+        <p class="body-lg text-linen-dim">
+          Proper pruning keeps trees healthy, reduces storm hazard risk, and protects your property. PTD Inc. performs all trimming work from the tree itself — our climbers are trained and certified. We don't cut from bucket trucks on every job; we assess and choose the right method.
+        </p>
+
+        <div class="trimming-types reveal reveal-delay-1">
+          {[
+            {
+              name: 'Crown Thinning',
+              desc: 'Removes select interior branches to improve light penetration and air flow without changing the overall shape of the canopy.'
+            },
+            {
+              name: 'Crown Lifting',
+              desc: 'Raises the lower canopy by removing lower branches. Improves clearance over roads, buildings, and foot traffic areas.'
+            },
+            {
+              name: 'Deadwood Removal',
+              desc: 'Eliminates dead, dying, and diseased branches that pose a falling risk. Critical after storms or periods of drought.'
+            },
+            {
+              name: 'Structural Pruning',
+              desc: 'Guides the growth of younger trees into a strong, stable structure. Prevents costly problems 10 years down the line.'
+            },
+            {
+              name: 'Utility Line Clearance',
+              desc: 'Clears branches encroaching on power or telecom lines. We coordinate with utilities when required.'
+            },
+            {
+              name: 'Vista Pruning',
+              desc: 'Selectively opens views from a specific vantage point without compromising tree health or structural integrity.'
+            }
+          ].map((type) => (
+            <div class="trimming-type-card">
+              <h3 class="display-card trimming-type-name">{type.name}</h3>
+              <p class="body-sm text-linen-dim">{type.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="service-list-block reveal reveal-delay-2">
+          <h3 class="service-list-heading label">Best Time to Prune</h3>
+          <p class="body-sm text-linen-dim best-time-text">
+            Most deciduous trees are best pruned in late winter or early spring before new growth begins. Dead branches can be removed any time of year. PTD offers year-round scheduling — call us and we'll advise on the right window for your specific species.
+          </p>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="service-sidebar reveal reveal-delay-3">
+        <div class="sidebar-card">
+          <h3 class="sidebar-card-title label">Get a Quote</h3>
+          <p class="body-sm text-linen-dim sidebar-body">Call us or request online. We quote on-site, no charge.</p>
+          <a href="tel:+15555555555" class="btn btn--primary sidebar-btn" id="trimming-sidebar-call">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (555) 555-5555
+          </a>
+          <a href="/contact" class="btn btn--outline sidebar-btn" id="trimming-sidebar-form">Request Online</a>
+        </div>
+
+        <div class="sidebar-card sidebar-trust">
+          <h3 class="sidebar-card-title label">Why PTD</h3>
+          <ul class="sidebar-trust-list">
+            <li>NJ License # TRC-00549821</li>
+            <li>Fully insured — $2M liability</li>
+            <li>Trained climbing arborists</li>
+            <li>No subcontractors, ever</li>
+            <li>Year-round scheduling</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <CTABanner />
+</BaseLayout>
+
+<style>
+  /* Reuse service page base styles */
+  .service-hero {
+    position: relative;
+    height: 55vh;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  .service-hero-bg { position: absolute; inset: 0; }
+  .service-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+  .service-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,31,27,0.95) 0%, rgba(26,31,27,0.3) 100%);
+  }
+
+  .service-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: var(--space-12);
+    padding-top: 90px;
+  }
+
+  .service-hero-content .label { margin-bottom: var(--space-3); display: block; }
+  .service-hero-heading { margin-bottom: var(--space-4); }
+  .service-hero-body { max-width: 500px; }
+
+  .service-content { background-color: var(--color-charcoal); }
+
+  .service-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 900px) {
+    .service-content-grid {
+      grid-template-columns: 1fr 320px;
+      align-items: start;
+    }
+  }
+
+  .service-section-title { margin-bottom: var(--space-6); }
+  .service-main > .body-lg { margin-bottom: var(--space-10); max-width: 640px; }
+
+  /* Trimming type cards */
+  .trimming-types {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-bottom: var(--space-10);
+  }
+
+  @media (min-width: 600px) {
+    .trimming-types { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .trimming-type-card {
+    background-color: var(--color-charcoal-2);
+    border-top: 2px solid var(--color-amber);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .trimming-type-name { color: var(--color-linen); font-size: 1.4rem; }
+
+  .service-list-block { margin-bottom: var(--space-10); }
+  .service-list-heading { margin-bottom: var(--space-4); display: block; }
+  .best-time-text { color: var(--color-linen-dim); line-height: 1.75; }
+
+  /* Sidebar */
+  .service-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    position: sticky;
+    top: 90px;
+  }
+
+  .sidebar-card {
+    background-color: var(--color-charcoal-2);
+    border: 1px solid rgba(160, 98, 42, 0.2);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .sidebar-card-title { font-size: 0.7rem; letter-spacing: 0.2em; }
+  .sidebar-body { color: var(--color-linen-dim); }
+  .sidebar-btn { width: 100%; justify-content: center; }
+
+  .sidebar-trust-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .sidebar-trust-list li {
+    font-size: 0.875rem;
+    color: var(--color-linen-dim);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .sidebar-trust-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-moss-lt);
+  }
+</style>

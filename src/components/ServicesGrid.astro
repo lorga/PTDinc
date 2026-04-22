@@ -1,0 +1,197 @@
+---
+// ServicesGrid.astro — Homepage services overview
+---
+<section class="section services-section" id="services" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">What We Do</p>
+      <h2 class="display-section services-heading" id="services-heading">
+        Two Services.<br />
+        Done Right.
+      </h2>
+    </div>
+
+    <div class="services-grid">
+      <!-- Tree Removal -->
+      <article class="service-card reveal reveal-delay-1" id="service-card-removal">
+        <div class="service-card-img-wrap">
+          <img
+            src="/images/tree-removal.webp"
+            alt="PTD Inc. crew removing a hazardous dead tree near a home in Westfield, NJ"
+            width="640"
+            height="480"
+            loading="lazy"
+            class="service-card-img"
+          />
+          <div class="service-card-img-overlay"></div>
+        </div>
+        <div class="service-card-body">
+          <span class="label">Service 01</span>
+          <h3 class="display-card service-card-title">Tree Removal</h3>
+          <p class="body-sm text-linen-dim service-card-desc">
+            Dead, damaged, storm-hit, or just in the way. We remove trees of any size safely and efficiently. Full cleanup and stump grinding available.
+          </p>
+          <ul class="service-card-features">
+            <li>Complete stump removal</li>
+            <li>Storm damage + emergency calls</li>
+            <li>Crane and rigging for tight spaces</li>
+            <li>Full yard debris cleanup</li>
+          </ul>
+          <a href="/services/tree-removal" class="btn btn--ghost-amber service-card-cta" id="services-removal-cta">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Tree Trimming -->
+      <article class="service-card service-card--alt reveal reveal-delay-2" id="service-card-trimming">
+        <div class="service-card-img-wrap">
+          <img
+            src="/images/tree-trimming.webp"
+            alt="PTD Inc. arborist pruning overgrown oak branches in Summit, NJ"
+            width="640"
+            height="480"
+            loading="lazy"
+            class="service-card-img"
+          />
+          <div class="service-card-img-overlay"></div>
+        </div>
+        <div class="service-card-body">
+          <span class="label">Service 02</span>
+          <h3 class="display-card service-card-title">Tree Trimming &amp; Pruning</h3>
+          <p class="body-sm text-linen-dim service-card-desc">
+            Overgrown canopies. Dead branches. Wire clearance. Crown thinning for light and air. We make your trees healthier and your property safer.
+          </p>
+          <ul class="service-card-features">
+            <li>Crown thinning and lifting</li>
+            <li>Deadwood and hazard removal</li>
+            <li>Utility line clearance</li>
+            <li>Structural pruning for young trees</li>
+          </ul>
+          <a href="/services/tree-trimming" class="btn btn--ghost-amber service-card-cta" id="services-trimming-cta">
+            Learn More
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background-color: var(--color-charcoal);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .section-header .label {
+    margin-bottom: var(--space-3);
+    display: block;
+  }
+
+  .services-heading {
+    color: var(--color-linen);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Card */
+  .service-card {
+    background-color: var(--color-charcoal-2);
+    border: 1px solid rgba(160, 98, 42, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease;
+  }
+
+  .service-card:hover {
+    border-color: rgba(160, 98, 42, 0.5);
+  }
+
+  .service-card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 260px;
+  }
+
+  .service-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out-expo);
+  }
+
+  .service-card:hover .service-card-img {
+    transform: scale(1.04);
+  }
+
+  .service-card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 31, 27, 0.7) 0%, transparent 60%);
+  }
+
+  .service-card-body {
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    flex: 1;
+  }
+
+  .service-card-title {
+    color: var(--color-linen);
+  }
+
+  .service-card-desc {
+    line-height: 1.7;
+  }
+
+  .service-card-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    flex: 1;
+  }
+
+  .service-card-features li {
+    font-size: 0.875rem;
+    color: var(--color-linen-dim);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .service-card-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-amber);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+  .service-card-cta {
+    align-self: flex-start;
+    margin-top: var(--space-4);
+    font-size: 0.85rem;
+    padding: var(--space-3) var(--space-6);
+  }
+</style>
